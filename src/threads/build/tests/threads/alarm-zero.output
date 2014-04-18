@@ -1,13 +1,11 @@
-qemu -hda /tmp/9xrqhpgxpa.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/kuhoDHxjVV.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading........
 Kernel command line: -q run alarm-zero
 Pintos booting with 4,096 kB RAM...
 383 pages available in kernel pool.
 383 pages available in user pool.
-Calibrating timer...  104,755,200 loops/s.
+Calibrating timer...  78,540,800 loops/s.
 Boot complete.
 Executing 'alarm-zero':
 (alarm-zero) begin
-
-TIMEOUT after 100 seconds of wall-clock time - load average: 0.97, 1.21, 0.98
