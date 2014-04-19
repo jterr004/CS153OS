@@ -1,4 +1,4 @@
-qemu -hda /tmp/bu2aFCdhyb.dsk -m 4 -net none -nographic -monitor null
+qemu -hda /tmp/xa2adp94F5.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading........
 Kernel command line: -q run priority-sema
@@ -22,7 +22,7 @@ Executing 'priority-sema':
 (priority-sema) end
 Execution of 'priority-sema' complete.
 Timer: 21 ticks
-Thread: 0 idle ticks, 22 kernel ticks, 0 user ticks
+Thread: 0 idle ticks, 21 kernel ticks, 0 user ticks
 Console: 752 characters output
 Keyboard: 0 keys pressed
 Powering off...
