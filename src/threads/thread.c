@@ -236,17 +236,13 @@ thread_block (void)
    be important: if the caller had disabled interrupts itself,
    it may expect that it can atomically unblock a thread and
    update other data. */
+
+/*This function is to compare the priority of each thread*/
 bool cmp_prio(const struct list_elem *a,const struct list_elem *b,void *aux UNUSED)
 {
   struct thread *ta = list_entry(a, struct thread, elem);
   struct thread *tb = list_entry(b, struct thread, elem);
   return ta->priority > tb->priority;
-}
-
-void
-thread_insert(struct list *temp_list, struct thread *passed_inlist)
-{
-	list_insert_ordered(temp_list,&passed_inlist->elem,cmp_prio,NULL);
 }
 
 void
@@ -258,7 +254,7 @@ thread_unblock (struct thread *t)
 
   old_level = intr_disable ();
   ASSERT (t->status == THREAD_BLOCKED);
-  thread_insert(&ready_list, t);
+  list_insert_ordered(&ready_list, &t->elem, cmp_prio, NULL); //Inserts the threads in order of priority
   t->status = THREAD_READY;
   intr_set_level (old_level);
 }
@@ -329,7 +325,8 @@ thread_yield (void)
 
   old_level = intr_disable ();
   if (cur != idle_thread) 
-    list_push_back (&ready_list, &cur->elem);
+    list_insert_ordered(&ready_list, &cur->elem, cmp_prio, NULL);
+    //list_push_back (&ready_list, &cur->elem);
   cur->status = THREAD_READY;
   schedule ();
   intr_set_level (old_level);
